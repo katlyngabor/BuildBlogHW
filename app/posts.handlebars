@@ -1,0 +1,5 @@
+var template = Handlebars.compile($('published-template').html());
+
+var rendered = template(data);
+
+$('.published-container').html(rendered);

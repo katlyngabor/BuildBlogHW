@@ -23,27 +23,31 @@
   </head>
   <body>
 
-    <div class="hero-unit">
-      <h1>'Allo, 'Allo!</h1>
-      <p>You now have</p>
-      <ul>
-        <li>HTML5 Boilerplate</li>
-        <li>Normalize CSS</li>
-
-        <li>Sass</li>
-
-
-        <li>Modernizr</li>
-
-
-        <li>Bourbon & Neat</li>
-
-
-        <li>UnderscoreJS</li>
-
-      </ul>
-      <p>Don't forget to update your readme file!!</p>
+    <div class="container">
+        <form>
+            <input class="title-container" placeholder="Post Title"></input>
+            <input class="author-container" placeholder="Who are you?"></input>
+            <textarea class="create-post-container" placeholder="Type Post Here"></textarea>
+            <input class="tag-container" placeholder="Tags go here. Separate with comma."></input>
+            <button class="submit">Publish</button>
+        </form>
+        <div class="published-container">
+            <div class="post-title"></div>
+            <div class="date"></div>
+            <div class="author"></div>
+            <div class="post-content"></div> 
+            <div class="tags"></div>
+        </div>
     </div>
+
+
+
+
+    <script type="text/x-handlebars-template" id="published-template">
+    {{#each posts}}
+        <li>Hi, my name is {{ name }} and I am from {{ location }}</li>
+    {{/each}}
+    </script>
 
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
