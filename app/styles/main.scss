@@ -6,6 +6,56 @@
 
 $containerBorder: 1px solid grey;
 $containerPadding: 8px;
+
+
+header{
+  font-size:30px;
+  width:285px;
+  float:left;
+  margin-top:30px;
+}
+
+.animate{
+  width:10px;
+  font-size:40px;
+  display:inline-block;
+  margin-top:26px;
+
+
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+
+    -moz-animation-name: blinker;
+    -moz-animation-duration: 1s;
+    -moz-animation-timing-function: linear;
+    -moz-animation-iteration-count: infinite;
+
+    animation-name: blinker;
+    animation-duration: 1s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+@-moz-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes blinker {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
 .container {
   @include span-columns(8);
   margin-left:100px;
@@ -15,7 +65,7 @@ $containerPadding: 8px;
 .title-container{
   @include span-columns(5);
   float:left;
-  margin-top:100px;
+  margin-top:70px;
   font-size:20px;
   padding:5px;
   border:$containerBorder
