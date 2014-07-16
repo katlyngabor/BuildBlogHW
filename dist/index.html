@@ -13,7 +13,7 @@
 
     <script src="scripts/vendor/modernizr.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
-    
+
   </head>
   <body>
     <header>Words,Words,Words.    
@@ -29,11 +29,6 @@
             <button class="submit">Publish</button>
         </form>
         <div class="published-container">
-            <div class="post-title"></div>
-            <div class="date"></div>
-            <div class="author"></div>
-            <div class="post-content"></div> 
-            <div class="tags"></div>
         </div>
     </div>
 
@@ -43,8 +38,11 @@
 
     <script type="text/x-handlebars-template" id="published-template">
     {{#each posts}}
-        <li>Hi, my name is {{ name }} and I am from {{ location }}</li>
-    {{/each}}
+        <div class="post-title">{{title}}</div>
+            <div class="date">{{date}}</div>
+            <div class="author">{{author}}</div>
+            <div class="post-content">{{content}}</div> 
+            <div class="tags">{{tags}}</div>
     </script>
 
     <script src="scripts/vendor.js"></script>

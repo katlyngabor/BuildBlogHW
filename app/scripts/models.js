@@ -1,13 +1,5 @@
-var Posts = Backbone.Model.extend({
+var Post = Backbone.Model.extend({
 
-	defaults:{
-		title: '',
-		date: '',
-		author: '',
-		content: '',
-		tags: '',
-		status: 'published'
-	},
 
 	idAttribute: "_id",
 
@@ -17,3 +9,30 @@ var Posts = Backbone.Model.extend({
 	}
 
 });
+
+var Posts = Backbone.Collection.extend ({
+
+	model: Post,
+	url:"http://tiy-atl-fe-server.herokuapp.com/collections/katlynsblog"
+
+});
+
+var all_posts = new Posts();
+
+// var Student = Backbone.Model.extend ({
+ 
+//   defaults: {
+//     name: '',
+//     location: 'Atlanta',
+//     awesome: true
+//   },
+ 
+//   idAttribute: "_id",
+ 
+//   initialize: function () {
+//     var name = this.get('name');
+//     console.log( name + ' has been added to your list of students.');
+//   }
+ 
+// });
+ 
