@@ -16,13 +16,13 @@
 
   </head>
   <body>
-    <header>Words,Words,Words.    
+    <header>Words, Words, Words.    
     </header>
-    <div class="animate">|
-    </div> 
-    <div class="container">   
+    <div class="animate">|</div> 
+    <button class="addNewBtn"> + </button>
+    <div class="modal">   
         <form>
-            <input class="title-container" placeholder="Post Title"></input>
+            <input class="title-container" placeholder="What's in a name?"></input>
             <input class="author-container" placeholder="Who are you?"></input>
             <textarea class="create-post-container" placeholder="Type Post Here"></textarea>
             <input class="tag-container" placeholder="Tags go here. Separate with comma."></input>
@@ -30,19 +30,22 @@
         </form>
         <div class="published-container">
         </div>
-    </div>
+     </div>
+    
 
-
-
-
+<!-- 
+<div class="tags">Tags:
+           {{#each tags}}
+           {{if }}
+ -->
 
     <script type="text/x-handlebars-template" id="published-template">
     {{#each posts}}
-        <div class="post-title">{{title}}</div>
+            <div class="post-title">{{title}}</div>
             <div class="date">{{date}}</div>
             <div class="author">{{author}}</div>
             <div class="post-content">{{content}}</div> 
-            <div class="tags">{{tags}}</div>
+    {{/each}}
     </script>
 
     <script src="scripts/vendor.js"></script>
