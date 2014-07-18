@@ -9,10 +9,10 @@ all_posts.fetch().done(function () {
 });
  
  
-// // Something happens
-// $("button").on("click", function() {
+// Something happens
+$("button").on("click", function() {
 
-//   // State changes
-//   $("body").toggleClass("dialogIsOpen");
+  // State changes
+  $("body").toggleClass("dialogIsOpen");
 
-// });
+});

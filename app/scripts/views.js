@@ -1,7 +1,7 @@
 
 var PublishedView = Backbone.View.extend({
 		
-		el:'.modal',
+		el:'.wrapper',
 
 	 	events: {
      	'click .submit' : 'postBlog'
@@ -17,12 +17,13 @@ var PublishedView = Backbone.View.extend({
 //Passing data to template
 			var template = Handlebars.compile($("#published-template").html());
 			var rendered = template({ posts:this.collection.toJSON() });
-			this.$el.find($('.published-container')).html(rendered);
+			$('.published-container').html(rendered);
 		},
 
 		postBlog: function(event){
 			event.preventDefault();
 			console.log('the button is buttoning!');
+			$("form")[0].reset();
 
 
 			// Grab all form data and define variables for each to use below and create new instance of your model 
