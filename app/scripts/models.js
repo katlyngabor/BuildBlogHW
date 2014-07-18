@@ -4,6 +4,7 @@ var Post = Backbone.Model.extend({
 	idAttribute: "_id",
 
 	initialize:function() {
+		console.log(this)
 		var title = this.get('title');
 		console.log( title + 'has been added to your posts.');
 	}
@@ -17,7 +18,7 @@ var Posts = Backbone.Collection.extend ({
 
 });
 
-var all_posts = new Posts();
+
 
 // var Student = Backbone.Model.extend ({
  

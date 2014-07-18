@@ -10,7 +10,7 @@ $headerFontFamily:'Roboto Slab', serif;
 
 
 header{
-  font-size:40px;
+  font-size:38px;
   width:385px;
   float:left;
   margin-top:30px;
@@ -60,7 +60,13 @@ header{
     100% { opacity: 1.0; }
 }
 
-.container {
+.addNewBtn{
+  float:right;
+  margin-right: 333px;
+  margin-top:75px;
+}
+
+.modal {
   @include span-columns(8);
   margin-left:100px;
   clear:both;
@@ -127,3 +133,5 @@ header{
   float:left;
   border-top:$containerBorder;
 }
+
+
