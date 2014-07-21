@@ -63,8 +63,6 @@ var PublishedView = Backbone.View.extend({
 		postBlog: function(event){
 			event.preventDefault();
 			console.log('the button is buttoning!');
-			$("form")[0].reset();
-
 
 			// Grab all form data and define variables for each to use below and create new instance of your model 
     	var temp_post = new Post({
@@ -75,10 +73,13 @@ var PublishedView = Backbone.View.extend({
 	      // tags: tags.replace(/\s+/g, '').split(','),
 	      status: 'Published',
 	      // date: new Date().toJSON().slice(0,10)
+
 	    });
   
     // Save your model; this will save it to the database and re-render the page
     	all_posts.add(temp_post).save();
+
+    	$("form")[0].reset();
 
    }
 
@@ -129,3 +130,4 @@ $("button").on("click", function() {
   $("body").toggleClass("dialogIsOpen");
 
 });
+	
