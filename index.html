@@ -19,21 +19,25 @@
     <header>Words, Words, Words.    
     </header>
     <div class="animate">|</div> 
-    <button class="addNewBtn"> + </button>
-    <div class="wrapper">   
-        <div class="published-container"></div>
-         <div class="modal">   
-            <form>
-              <input class="title-container" placeholder="Title"></input>
-              <input class="author-container" placeholder="Author"></input>
-              <textarea class="create-post-container" placeholder="Type Post Here">
-              </textarea>
-              <input class="tag-container" placeholder="Tags go here. Separate with comma.">
-              </input>
-              <button class="closeModalBtn">Cancel</button>
-              <button class="submit">Publish</button>
-            </form>
+    <div class="wrapper">  
+      <button class="addNewBtn"> + New Post </button> 
+      <div class="published-container">
+      </div>
+        <div class="modal">   
+          <form>
+            <input class="title-container" placeholder="Title"></input>
+            <input class="author-container" placeholder="Author"></input>
+            <textarea class="create-post-container" placeholder="Type Post Here">
+            </textarea>
+            <input class="tag-container" placeholder="Tags go here. Separate with comma.">
+            </input>
+            <button class="closeModalBtn">Cancel</button>
+            <button class="submit">Publish</button>
+          </form>
         </div>
+    </div>
+    <div class="singleViewContainer">
+      <!-- <button class="done">Done</button> -->
     </div>
          
     
@@ -46,11 +50,22 @@
 
     <script type="text/x-handlebars-template" id="published-template">
     {{#each posts}}
-            <div class="post-title">{{title}}</div>
-            <div class="date">{{date}}</div>
-            <div class="author">{{author}}</div>
-            <div class="post-content">{{content}}</div> 
+            <div class="post-title"><a id="{{ _id }}" href= "/#post/{{_id}}">{{title}}</a>
+            </div>
+            <div class="tags-container">
+                {{#if tags}}
+                        <p class='tags'>Tags: "{{tags}}"</p>
+                 {{/if}}
+            </div>
+
     {{/each}}
+    </script>
+
+    <script type="text/x-handlebars-template" id="singleViewTemplate">
+      <h1 class="singleViewTitle">{{title}}</h1>
+      <div class="singleViewContent">{{content}}</div>
+      <button class="return">Back</button>
+      <button class="deletePostBtn">Delete</button>
     </script>
 
     <script src="scripts/vendor.js"></script>
