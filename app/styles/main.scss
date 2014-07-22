@@ -7,6 +7,12 @@
 $containerBorder: 1px solid grey;
 $containerPadding: 8px;
 $headerFontFamily:'Roboto Slab', serif;
+@mixin buttonStyles{
+  background-color:white;
+  color:black;
+  border:3px dotted #009999;
+  padding:8px;
+}
 
 
 header{
@@ -62,8 +68,9 @@ header{
 
 .addNewBtn{
   float:right;
-  margin-right: 333px;
-  margin-top:75px;
+  margin-right:170px;
+  margin-top:0px;
+  @include buttonStyles;
 }
 
 .modal {
@@ -113,7 +120,7 @@ header{
 .dialogIsOpen .modal {
   
   /* Regular size and visible */
-  transform: scale(1); /* prefix me */
+  transform: scale(1); 
   opacity: 1;
 
 
@@ -174,30 +181,30 @@ header{
 
 .submit{
   float:right;
-  margin-top:60px;
-  padding:15px;
-  background-color:white;
-  color:black;
-  border:3px dotted #009999;
-  margin-right:10px;
+  @include buttonStyles;
+   margin-top:60px;
+   margin-right:10px;
 }
 
 .closeModalBtn{
   float:right;
+  @include buttonStyles;
   margin-top:60px;
-  padding:15px;
-  background-color:white;
-  color:black;
-  border:3px dotted #009999;
+  margin-right:10px;
 }
 
 .published-container{
   @include span-columns(12);
-  margin-top:30px;
+  margin-top:10px;
   padding:$containerPadding;
-  padding-top:15px;
   float:left;
   border-top:$containerBorder;
+  font-family:$headerFontFamily;
+  font-size:30px;
+}
+
+.post-title{
+  margin-left:80px;
 }
 
 

@@ -18,6 +18,7 @@ var Posts = Backbone.Collection.extend ({
 
 });
 
+// var all_posts = new Posts();
 
 
 // var Student = Backbone.Model.extend ({
