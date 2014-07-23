@@ -53,21 +53,20 @@ var PublishedView = Backbone.View.extend({
 				this.collection.on('destroy',this.render, this);
 				this.collection.on('add', this.render,this);
 		},
-//Rendering page data
+
 		render:function(){
-//Passing data to template
+
 			var template = Handlebars.compile($("#published-template").html());
 			var rendered = template({ posts:this.collection.toJSON() });
 			$('.published-container').html(rendered);
+			$('.published-container').show();
 		},
 
     viewPost: function (event){
-    	console.log('you got here');
   		event.preventDefault();
   		event.stopPropagation();
   		var postid = $(event.target).attr('id');
   		window.blog_router.navigate('#post/'+postid, {trigger: true});
-  		$('.published-container').hide();
   		$('.singleViewContainer').show();
   	}
 
@@ -93,14 +92,14 @@ var SingleView = Backbone.View.extend({
   	var template = Handlebars.compile($('#singleViewTemplate').html());
 		var rendered = template(this.singlePost.toJSON());
     this.$el.html(rendered);
+    $('.published-container').hide();
   	},
 
 		returnHome: function (event){
 			event.preventDefault();
 		  window.blog_router.navigate('', { trigger: true });
-		  $('.published-container').show();
 		  $('.singleViewContainer').hide();
-
+      $('.published-container').show();
    	},
 
    	 deletePost: function (event) {
@@ -113,17 +112,6 @@ var SingleView = Backbone.View.extend({
       }});
     }
   }
-
- // deleteWhiskey: function (event) {
- //    event.preventDefault();
- //    event.stopPropagation();
- //    // Standard JS confirm dialogue
- //    if (window.confirm("Are you sure?")) {
- //      this.whiskey.destroy({success: function () { // and one more time :) - btw this destroys my this.whiskey object
- //        window.whiskey_router.navigate("", { trigger: true }); // E.T. Phone Home (route me home)
- //      }});
- //    }
- //  }
 
 });
 
@@ -168,13 +156,14 @@ $("button").on("click", function() {
 });
 
 
-$('.modal').on('submit', function (event) {
+$('.submit').on('click', function (event) {
   event.preventDefault();
 
   var temp_post = new Post({
     title: $('.title-container').val(),
     author: $('.author-container').val(),
-    content: $('.create-post-container').val()
+    content: $('.create-post-container').val(),
+    tags: $('.tag-container').val()
   });
 
    temp_post.save(null, {
