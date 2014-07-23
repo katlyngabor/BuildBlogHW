@@ -1,20 +1,20 @@
-var Post = Backbone.Model.extend({
+var Post = Parse.Object.extend({
 
+	className: 'PostItem',
 
-	idAttribute: "_id",
+	idAttribute: "objectId",
 
-	initialize:function() {
-		console.log(this)
+	initialize: function() {
 		var title = this.get('title');
-		console.log( title + 'has been added to your posts.');
+		console.log( title + ' has been added to your posts.');
 	}
 
 });
 
-var Posts = Backbone.Collection.extend ({
+var Posts = Parse.Collection.extend ({
 
-	model: Post,
-	url:"http://tiy-atl-fe-server.herokuapp.com/collections/katlynsblog"
+	model: Post
+	// url:"http://tiy-atl-fe-server.herokuapp.com/collections/katlynsblog"
 
 });
 

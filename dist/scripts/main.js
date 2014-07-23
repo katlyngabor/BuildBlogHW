@@ -1,20 +1,20 @@
-var Post = Backbone.Model.extend({
+var Post = Parse.Object.extend({
 
+	className: 'PostItem',
 
-	idAttribute: "_id",
+	idAttribute: "objectId",
 
-	initialize:function() {
-		console.log(this)
+	initialize: function() {
 		var title = this.get('title');
-		console.log( title + 'has been added to your posts.');
+		console.log( title + ' has been added to your posts.');
 	}
 
 });
 
-var Posts = Backbone.Collection.extend ({
+var Posts = Parse.Collection.extend ({
 
-	model: Post,
-	url:"http://tiy-atl-fe-server.herokuapp.com/collections/katlynsblog"
+	model: Post
+	// url:"http://tiy-atl-fe-server.herokuapp.com/collections/katlynsblog"
 
 });
 
@@ -51,6 +51,7 @@ var PublishedView = Backbone.View.extend({
 				this.render();
 				this.collection.on('change', this.render, this);
 				this.collection.on('destroy',this.render, this);
+				this.collection.on('add', this.render,this);
 		},
 //Rendering page data
 		render:function(){
@@ -59,18 +60,6 @@ var PublishedView = Backbone.View.extend({
 			var rendered = template({ posts:this.collection.toJSON() });
 			$('.published-container').html(rendered);
 		},
-
-		// postBlog: function(event){
-		// 	event.preventDefault();
-		// 	console.log('the button is buttoning!');
-  
-  //   // Save your model; this will save it to the database and re-render the page
-  //   all_posts.add(temp_post).save();
-
-  //   	$("form")[0].reset();
-
-  //   },
-
 
     viewPost: function (event){
     	console.log('you got here');
@@ -112,7 +101,7 @@ var SingleView = Backbone.View.extend({
 		  $('.published-container').show();
 		  $('.singleViewContainer').hide();
 
-   	},
+   	}
 
   //  	 deletePost: function (event) {
   //   	event.preventDefault();
@@ -128,6 +117,9 @@ var SingleView = Backbone.View.extend({
 });
 
 		
+Parse.initialize("VzA1OHYwxJS1hIhddwxiabGMHpAyfGGTsb53jKEv", "DL1poLJ3xopc0bWomQWujpUI5H2DdVD2hhaya6F8");
+
+
 // Create an instance of my Collection
 var all_posts = new Posts();
 
@@ -139,6 +131,22 @@ all_posts.fetch().done(function () {
 	Backbone.history.start();
 });
  
+
+// var AppView = function (){
+
+//   this.showView = function(view) {
+//     if (this.currentView){
+//       this.currentView.remove();
+//     }
+
+//     this.currentView = view;
+//     this.currentView.render();
+
+//     // $("").html(this.currentView.el);
+//   }
+
+// } 
+
  
 // Something happens
 $("button").on("click", function() {
@@ -158,9 +166,15 @@ $('.modal').on('submit', function (event) {
     content: $('.create-post-container').val()
   });
 
-  all_posts.add(temp_post).save();
-
-  // $(this).trigger('reset');
+   temp_post.save(null, {
+      success: function(temp_post) {
+        // Adds to my collection
+        all_posts.add(temp_post);
+        // Resets my form 
+        // $(this).trigger('reset');
+        // $('.modal-window').removeClass('modal-open');
+      }
+    });
   
 });
 
@@ -208,13 +222,19 @@ var BlogRouter = Backbone.Router.extend({
     'post/:id' : 'singleView'
   },
 
+ // initialize: function () {
+ //    this.appView = new AppView();
+ //  },
+
   home: function() {
-    new  PublishedView( { collection: all_posts });
+    var pubView = new PublishedView( { collection: all_posts });
+    // this.appView.showView(pubView);
   },
 
 
   singleView: function(id) {
-    new SingleView({ postid: id, collection: all_posts });
+    var singView = new SingleView({ postid: id, collection: all_posts });
+    // this.appView.showView(singView);
   }
 
 });

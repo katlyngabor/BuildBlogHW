@@ -8,13 +8,19 @@ var BlogRouter = Backbone.Router.extend({
     'post/:id' : 'singleView'
   },
 
+ // initialize: function () {
+ //    this.appView = new AppView();
+ //  },
+
   home: function() {
-    new  PublishedView( { collection: all_posts });
+    var pubView = new PublishedView( { collection: all_posts });
+    // this.appView.showView(pubView);
   },
 
 
   singleView: function(id) {
-    new SingleView({ postid: id, collection: all_posts });
+    var singView = new SingleView({ postid: id, collection: all_posts });
+    // this.appView.showView(singView);
   }
 
 });

@@ -1,3 +1,6 @@
+Parse.initialize("VzA1OHYwxJS1hIhddwxiabGMHpAyfGGTsb53jKEv", "DL1poLJ3xopc0bWomQWujpUI5H2DdVD2hhaya6F8");
+
+
 // Create an instance of my Collection
 var all_posts = new Posts();
 
@@ -9,6 +12,22 @@ all_posts.fetch().done(function () {
 	Backbone.history.start();
 });
  
+
+// var AppView = function (){
+
+//   this.showView = function(view) {
+//     if (this.currentView){
+//       this.currentView.remove();
+//     }
+
+//     this.currentView = view;
+//     this.currentView.render();
+
+//     // $("").html(this.currentView.el);
+//   }
+
+// } 
+
  
 // Something happens
 $("button").on("click", function() {
@@ -28,9 +47,15 @@ $('.modal').on('submit', function (event) {
     content: $('.create-post-container').val()
   });
 
-  all_posts.add(temp_post).save();
-
-  // $(this).trigger('reset');
+   temp_post.save(null, {
+      success: function(temp_post) {
+        // Adds to my collection
+        all_posts.add(temp_post);
+        // Resets my form 
+        // $(this).trigger('reset');
+        // $('.modal-window').removeClass('modal-open');
+      }
+    });
   
 });
 

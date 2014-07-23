@@ -24,7 +24,7 @@ var SingleView = Backbone.View.extend({
 		  $('.published-container').show();
 		  $('.singleViewContainer').hide();
 
-   	},
+   	}
 
   //  	 deletePost: function (event) {
   //   	event.preventDefault();

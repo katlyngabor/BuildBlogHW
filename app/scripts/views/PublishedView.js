@@ -10,6 +10,7 @@ var PublishedView = Backbone.View.extend({
 				this.render();
 				this.collection.on('change', this.render, this);
 				this.collection.on('destroy',this.render, this);
+				this.collection.on('add', this.render,this);
 		},
 //Rendering page data
 		render:function(){
@@ -18,18 +19,6 @@ var PublishedView = Backbone.View.extend({
 			var rendered = template({ posts:this.collection.toJSON() });
 			$('.published-container').html(rendered);
 		},
-
-		// postBlog: function(event){
-		// 	event.preventDefault();
-		// 	console.log('the button is buttoning!');
-  
-  //   // Save your model; this will save it to the database and re-render the page
-  //   all_posts.add(temp_post).save();
-
-  //   	$("form")[0].reset();
-
-  //   },
-
 
     viewPost: function (event){
     	console.log('you got here');

@@ -5,6 +5,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>BuildBlogHW</title>
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link rel="stylesheet" href="styles/vendor.css">
@@ -13,6 +14,8 @@
 
     <script src="scripts/vendor/modernizr.js"></script>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+
+    <script src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
 
   </head>
   <body>
@@ -50,14 +53,8 @@
 
     <script type="text/x-handlebars-template" id="published-template">
     {{#each posts}}
-            <div class="post-title"><a id="{{ _id }}" href= "/#post/{{_id}}">{{title}}</a>
+            <div class="post-title"><a id="{{ objectId }}" href= "/#post/{{ objectId }}">{{title}}</a>
             </div>
-            <div class="tags-container">
-                {{#if tags}}
-                        <p class='tags'>Tags: "{{tags}}"</p>
-                 {{/if}}
-            </div>
-
     {{/each}}
     </script>
 
