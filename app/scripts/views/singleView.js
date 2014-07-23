@@ -16,14 +16,14 @@ var SingleView = Backbone.View.extend({
   	var template = Handlebars.compile($('#singleViewTemplate').html());
 		var rendered = template(this.singlePost.toJSON());
     this.$el.html(rendered);
+    $('.published-container').hide();
   	},
 
 		returnHome: function (event){
 			event.preventDefault();
 		  window.blog_router.navigate('', { trigger: true });
-		  $('.published-container').show();
 		  $('.singleViewContainer').hide();
-
+      $('.published-container').show();
    	},
 
    	 deletePost: function (event) {
@@ -36,17 +36,6 @@ var SingleView = Backbone.View.extend({
       }});
     }
   }
-
- // deleteWhiskey: function (event) {
- //    event.preventDefault();
- //    event.stopPropagation();
- //    // Standard JS confirm dialogue
- //    if (window.confirm("Are you sure?")) {
- //      this.whiskey.destroy({success: function () { // and one more time :) - btw this destroys my this.whiskey object
- //        window.whiskey_router.navigate("", { trigger: true }); // E.T. Phone Home (route me home)
- //      }});
- //    }
- //  }
 
 });
 

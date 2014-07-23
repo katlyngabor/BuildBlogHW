@@ -38,13 +38,14 @@ $("button").on("click", function() {
 });
 
 
-$('.modal').on('submit', function (event) {
+$('.submit').on('click', function (event) {
   event.preventDefault();
 
   var temp_post = new Post({
     title: $('.title-container').val(),
     author: $('.author-container').val(),
-    content: $('.create-post-container').val()
+    content: $('.create-post-container').val(),
+    tags: $('.tag-container').val()
   });
 
    temp_post.save(null, {

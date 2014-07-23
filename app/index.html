@@ -22,6 +22,7 @@
     <script src="../bower_components/modernizr/modernizr.js"></script>
     <!-- endbuild -->
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
 
     <script src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
 
@@ -61,10 +62,14 @@
  -->
 
     <script type="text/x-handlebars-template" id="published-template">
-    {{#each posts}}
-            <div class="post-title"><a id="{{ objectId }}" href= "/#post/{{ objectId }}">{{title}}</a>
-            </div>
-    {{/each}}
+      {{#each posts}}
+        <div class="post-title"><a id="{{ objectId }}" href= "/#post/{{ objectId }}">
+          {{title}}</a>
+        </div>
+          {{#if tags}}
+            <p class="tags">Tags:{{tags}}</p>
+          {{/if}}
+      {{/each}}
     </script>
 
     <script type="text/x-handlebars-template" id="singleViewTemplate">
