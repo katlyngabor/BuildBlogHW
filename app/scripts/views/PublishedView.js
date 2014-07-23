@@ -1,6 +1,6 @@
 var PublishedView = Backbone.View.extend({
 		
-		el:'.wrapper',
+		// el:'.wrapper',
 
 	 	events: { 
      	'click a' : 'viewPost'

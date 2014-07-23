@@ -41,7 +41,7 @@ var Posts = Parse.Collection.extend ({
 
 var PublishedView = Backbone.View.extend({
 		
-		el:'.wrapper',
+		// el:'.wrapper',
 
 	 	events: { 
      	'click a' : 'viewPost'
@@ -77,11 +77,11 @@ var PublishedView = Backbone.View.extend({
 		
 var SingleView = Backbone.View.extend({
 		
-		el:'.singleViewContainer',
+		// el:'.singleViewContainer',
 
 	 	events: {
-     	'click .return' : 'returnHome'
-     	// 'click .deletePostBtn' : 'deletePost'
+     	'click .return' : 'returnHome',
+     	'click .deletePostBtn' : 'deletePost'
  		},
 
 		initialize: function(attributes){
@@ -101,18 +101,29 @@ var SingleView = Backbone.View.extend({
 		  $('.published-container').show();
 		  $('.singleViewContainer').hide();
 
-   	}
+   	},
 
-  //  	 deletePost: function (event) {
-  //   	event.preventDefault();
-  //   	event.stopPropagation();
-  //   	// Confirmation dialogue
-  //   	if (window.confirm("Are you sure you want to delete this post?")) {
-  //     	this.singlePost.destroy({success: function () {
-  //       window.blog_router.navigate('', { trigger: true });
-  //     }});
-  //   }
-  // }
+   	 deletePost: function (event) {
+    	event.preventDefault();
+    	event.stopPropagation();
+    	// Confirmation dialogue
+    	if (window.confirm("Are you sure you want to delete this post?")) {
+      	this.singlePost.destroy({success: function () {
+        window.blog_router.navigate('', { trigger: true });
+      }});
+    }
+  }
+
+ // deleteWhiskey: function (event) {
+ //    event.preventDefault();
+ //    event.stopPropagation();
+ //    // Standard JS confirm dialogue
+ //    if (window.confirm("Are you sure?")) {
+ //      this.whiskey.destroy({success: function () { // and one more time :) - btw this destroys my this.whiskey object
+ //        window.whiskey_router.navigate("", { trigger: true }); // E.T. Phone Home (route me home)
+ //      }});
+ //    }
+ //  }
 
 });
 
@@ -132,20 +143,20 @@ all_posts.fetch().done(function () {
 });
  
 
-// var AppView = function (){
+var AppView = function (){
 
-//   this.showView = function(view) {
-//     if (this.currentView){
-//       this.currentView.remove();
-//     }
+  this.showView = function(view) {
+    if (this.currentView){
+      this.currentView.remove();
+    }
 
-//     this.currentView = view;
-//     this.currentView.render();
+    this.currentView = view;
+    this.currentView.render();
 
-//     // $("").html(this.currentView.el);
-//   }
+    $(".zombie").html(this.currentView.el);
+  }
 
-// } 
+}
 
  
 // Something happens
@@ -222,19 +233,19 @@ var BlogRouter = Backbone.Router.extend({
     'post/:id' : 'singleView'
   },
 
- // initialize: function () {
- //    this.appView = new AppView();
- //  },
+ initialize: function () {
+    this.appView = new AppView();
+  },
 
   home: function() {
     var pubView = new PublishedView( { collection: all_posts });
-    // this.appView.showView(pubView);
+    this.appView.showView(pubView);
   },
 
 
   singleView: function(id) {
     var singView = new SingleView({ postid: id, collection: all_posts });
-    // this.appView.showView(singView);
+    this.appView.showView(singView);
   }
 
 });

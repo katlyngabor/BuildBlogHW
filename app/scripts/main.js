@@ -13,20 +13,20 @@ all_posts.fetch().done(function () {
 });
  
 
-// var AppView = function (){
+var AppView = function (){
 
-//   this.showView = function(view) {
-//     if (this.currentView){
-//       this.currentView.remove();
-//     }
+  this.showView = function(view) {
+    if (this.currentView){
+      this.currentView.remove();
+    }
 
-//     this.currentView = view;
-//     this.currentView.render();
+    this.currentView = view;
+    this.currentView.render();
 
-//     // $("").html(this.currentView.el);
-//   }
+    $(".zombie").html(this.currentView.el);
+  }
 
-// } 
+}
 
  
 // Something happens
