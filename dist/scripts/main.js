@@ -167,6 +167,7 @@ $('.submit').on('click', function (event) {
     author: $('.author-container').val(),
     content: $('.create-post-container').val(),
     tags: $('.tag-container').val()
+    
   });
 
    temp_post.save(null, {
@@ -178,7 +179,7 @@ $('.submit').on('click', function (event) {
         // $('.modal-window').removeClass('modal-open');
       }
     });
-
+   $("form")[0].reset();
    $('.addNewBtn').show();
 });
 
