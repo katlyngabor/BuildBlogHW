@@ -239,6 +239,7 @@ button:hover{
   @include span-columns(12);
   margin-top:10px;
   padding:$containerPadding;
+  padding-top:30px;
   float:left;
   border-top:$containerBorder;
   // font-family:$headerFontFamily;
