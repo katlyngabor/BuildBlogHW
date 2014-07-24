@@ -69,11 +69,16 @@ header{
 }
 
 .addNewBtn{
-  float:right;
+  // float:right;
   margin-right:170px;
   margin-top:0px;
   @include buttonStyles;
+  float:left;
 }
+
+// .tagline{
+//   float:left;
+// }
 
 .modal {
   background: white;
