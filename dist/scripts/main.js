@@ -153,7 +153,7 @@ $("button").on("click", function() {
 
   // State changes
   $("body").toggleClass("dialogIsOpen");
-  $('.addNewBtn').hide();
+  // $('.addNewBtn').hide();
   
 
 });
