@@ -5,6 +5,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
     <title>BuildBlogHW</title>
+
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <link rel="stylesheet" href="styles/vendor.css">
@@ -12,30 +13,69 @@
     <link rel="stylesheet" href="styles/main.css">
 
     <script src="scripts/vendor/modernizr.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Abel' rel='stylesheet' type='text/css'>
+
+    <script src="//www.parsecdn.com/js/parse-1.2.19.min.js"></script>
+
   </head>
   <body>
-
-    <div class="hero-unit">
-      <h1>'Allo, 'Allo!</h1>
-      <p>You now have</p>
-      <ul>
-        <li>HTML5 Boilerplate</li>
-        <li>Normalize CSS</li>
-
-        <li>Sass</li>
-
-
-        <li>Modernizr</li>
-
-
-        <li>Bourbon & Neat</li>
-
-
-        <li>UnderscoreJS</li>
-
-      </ul>
-      <p>Don't forget to update your readme file!!</p>
+    <header>
+    <div class="titleContainer">
+      <div class="headerTitle">Words, Words, Words.</div>    
+    <!--   <div class="animate">|</div>  -->
     </div>
+  <!--   <div class="tagline">A blog for writers to write.</div> --> 
+<!--     <div class="wrapper"> --> 
+      <div class="tagline">Where writers write</div>
+      <button class="addNewBtn"> Write Here. Write now. </button>
+      </header>
+      <div class="published-container">
+      </div>
+      <div class="zombie"></div>
+        <div class="modal">   
+          <form>
+            <input class="title-container" placeholder="Title"></input>
+            <input class="author-container" placeholder="Author"></input>
+            <textarea class="create-post-container" placeholder="Type Post Here">
+            </textarea>
+            <input class="tag-container" placeholder="Tags go here. Separate with comma.">
+            </input>
+            <button class="closeModalBtn">Cancel</button>
+            <button class="submit">Publish</button>
+          </form>
+        </div>
+   <!--  </div> -->
+    <div class="singleViewContainer">
+      <!-- <button class="done">Done</button> -->
+    </div>
+         
+    
+
+<!-- 
+<div class="tags">Tags:
+           {{#each tags}}
+           {{if }}
+ -->
+
+    <script type="text/x-handlebars-template" id="published-template">
+      {{#each posts}}
+        <div class="post-title"><a id="{{ objectId }}" href= "/#post/{{ objectId }}">
+          {{title}}</a>
+        </div>
+          {{#if tags}}
+            <p class="tags">Tags:{{tags}}</p>
+          {{/if}}
+      {{/each}}
+    </script>
+
+    <script type="text/x-handlebars-template" id="singleViewTemplate">
+      <h1 class="singleViewTitle">{{title}}</h1>
+      <div class="singleViewContent">{{content}}</div>
+      <div class="singleViewAuthor">{{author}}</div>
+      <button class="return">Back</button>
+      <button class="deletePostBtn">Delete</button>
+    </script>
 
     <script src="scripts/vendor.js"></script>
 
