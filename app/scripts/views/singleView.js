@@ -1,6 +1,6 @@
 var SingleView = Backbone.View.extend({
 		
-		// el:'.singleViewContainer',
+		className:'singleContainer',
 
 	 	events: {
      	'click .return' : 'returnHome',

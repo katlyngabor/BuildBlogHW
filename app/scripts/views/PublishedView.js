@@ -27,6 +27,7 @@ var PublishedView = Backbone.View.extend({
   		var postid = $(event.target).attr('id');
   		window.blog_router.navigate('#post/'+postid, {trigger: true});
   		$('.singleViewContainer').show();
+  		// $('.addNewBtn').hide();    WORK ON THIS
   	}
 
 

@@ -68,6 +68,7 @@ var PublishedView = Backbone.View.extend({
   		var postid = $(event.target).attr('id');
   		window.blog_router.navigate('#post/'+postid, {trigger: true});
   		$('.singleViewContainer').show();
+  		// $('.addNewBtn').hide();    WORK ON THIS
   	}
 
 
@@ -76,7 +77,7 @@ var PublishedView = Backbone.View.extend({
 		
 var SingleView = Backbone.View.extend({
 		
-		// el:'.singleViewContainer',
+		className:'singleContainer',
 
 	 	events: {
      	'click .return' : 'returnHome',
@@ -152,6 +153,8 @@ $("button").on("click", function() {
 
   // State changes
   $("body").toggleClass("dialogIsOpen");
+  $('.addNewBtn').hide();
+  
 
 });
 
@@ -175,7 +178,8 @@ $('.submit').on('click', function (event) {
         // $('.modal-window').removeClass('modal-open');
       }
     });
-  
+
+   $('.addNewBtn').show();
 });
 
 

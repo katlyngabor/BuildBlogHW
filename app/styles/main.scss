@@ -1,5 +1,6 @@
  // Bourbon & Neat
 @import '../../bower_components/bourbon/dist/bourbon';
+// @import '../../bower_components/bitters/app/assets/stylesheets/base';
 @import '../../bower_components/neat/app/assets/stylesheets/neat';
 
 // Custom Styles
@@ -9,29 +10,50 @@ $containerPadding: 8px;
 $headerFontFamily:'Roboto Slab', serif;
 $titleFont: 'Abel', sans-serif;
 @mixin buttonStyles{
-  background-color:white;
-  color:black;
+  background-color:#736673;
+  color:#E3E5E8;
   // border:2px dotted #009999;
   // padding:8px;
   font-family:$headerFontFamily;
+  padding:5px;
 }
 
-
+body{
+  width:900px;
+  margin:0 auto;
+}
 header{
-  font-size:38px;
-  width:385px;
+  
+  width:395px;
   float:left;
-  margin-top:30px;
+  // margin-top:30px;
   margin-left:80px;
   font-family:$headerFontFamily;
+  height:150px;
+  margin-top:40px;
+    .titleContainer{
+      float:left;
+      width:400px;
+    }
+
+    .headerTitle{
+      font-size:38px;
+      // width:385px;
+    }
+
+    .tagline{
+      // width:200px;
+      font-size:25px;
+    }
 
 }
 
 .animate{
   width:10px;
   font-size:50px;
-  display:inline-block;
-  margin-top:29px;
+  // display:inline-block;
+  // margin-top:29px;
+  float:right;
 
 
     -webkit-animation-name: blinker;
@@ -70,10 +92,11 @@ header{
 
 .addNewBtn{
   // float:right;
-  margin-right:170px;
-  margin-top:0px;
+
+  margin-top:10px;
   @include buttonStyles;
   float:left;
+  border-style:outset;
 }
 
 // .tagline{
@@ -224,6 +247,7 @@ header{
   margin-left:80px;
   font-family:$titleFont;
   font-size:25px;
+  margin-bottom:10px;
 }
 
 /* unvisited link */
@@ -244,19 +268,47 @@ a:hover {
 
 
 .zombie{
-  margin-left:120px;
-  margin-top:70px;
+  // margin-left:120px;
+  // margin-top:30px;
+  float:left;
+  width:900px;
+  margin:0 auto;
     button{
       @include buttonStyles;
       font-size:14px;
+      float:right;
     }
     .singleViewTitle{
       color:#f04349;
+    }
+
+    .singleContainer{
+      margin-top:100px;
+      padding-left:200px;
     }
     .singleViewContent{
       font-size:20px;
       margin-left:30px;
       margin-bottom:20px;
+      margin-top:10px;
+    }
+    .return{
+      margin-top:20px;
+      margin-right:100px;
+    }
+
+    .deletePostBtn{
+      margin-top:20px;
+      margin-right:10px;
     }
 }
+
+.dialogeIsOpen .zombie{
+    /* Blur and de-color */
+  -webkit-filter: blur(5px) grayscale(50%);
+
+  /* Recede */
+  -webkit-transform: scale(0.9);
+}
+
 

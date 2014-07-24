@@ -34,6 +34,8 @@ $("button").on("click", function() {
 
   // State changes
   $("body").toggleClass("dialogIsOpen");
+  $('.addNewBtn').hide();
+  
 
 });
 
@@ -57,7 +59,8 @@ $('.submit').on('click', function (event) {
         // $('.modal-window').removeClass('modal-open');
       }
     });
-  
+
+   $('.addNewBtn').show();
 });
 
 

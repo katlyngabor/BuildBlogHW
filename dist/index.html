@@ -20,14 +20,19 @@
 
   </head>
   <body>
-    <header>Words, Words, Words.    
-    </header>
-    <div class="animate">|</div> 
-    <div class="zombie"></div> 
-    <div class="wrapper">  
-      <button class="addNewBtn"> + New Post </button>
+    <header>
+    <div class="titleContainer">
+      <div class="headerTitle">Words, Words, Words.</div>    
+    <!--   <div class="animate">|</div>  -->
+    </div>
+  <!--   <div class="tagline">A blog for writers to write.</div> --> 
+<!--     <div class="wrapper"> --> 
+      <div class="tagline">Where writers write</div>
+      <button class="addNewBtn"> Write Here. Write now. </button>
+      </header>
       <div class="published-container">
       </div>
+      <div class="zombie"></div>
         <div class="modal">   
           <form>
             <input class="title-container" placeholder="Title"></input>
@@ -40,7 +45,7 @@
             <button class="submit">Publish</button>
           </form>
         </div>
-    </div>
+   <!--  </div> -->
     <div class="singleViewContainer">
       <!-- <button class="done">Done</button> -->
     </div>
@@ -67,6 +72,7 @@
     <script type="text/x-handlebars-template" id="singleViewTemplate">
       <h1 class="singleViewTitle">{{title}}</h1>
       <div class="singleViewContent">{{content}}</div>
+      <div class="singleViewAuthor">{{author}}</div>
       <button class="return">Back</button>
       <button class="deletePostBtn">Delete</button>
     </script>

@@ -28,12 +28,16 @@
 
   </head>
   <body>
-    <header>Words, Words, Words.    
-    </header>
-    <div class="animate">|</div> 
+    <header>
+    <div class="titleContainer">
+      <div class="headerTitle">Words, Words, Words.</div>    
+    <!--   <div class="animate">|</div>  -->
+    </div>
   <!--   <div class="tagline">A blog for writers to write.</div> --> 
-<!--     <div class="wrapper"> -->  
-      <button class="addNewBtn"> + New Post </button>
+<!--     <div class="wrapper"> --> 
+      <div class="tagline">Where writers write</div>
+      <button class="addNewBtn"> Write Here. Write now. </button>
+      </header>
       <div class="published-container">
       </div>
       <div class="zombie"></div>
@@ -76,6 +80,7 @@
     <script type="text/x-handlebars-template" id="singleViewTemplate">
       <h1 class="singleViewTitle">{{title}}</h1>
       <div class="singleViewContent">{{content}}</div>
+      <div class="singleViewAuthor">{{author}}</div>
       <button class="return">Back</button>
       <button class="deletePostBtn">Delete</button>
     </script>
