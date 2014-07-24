@@ -5,7 +5,8 @@ var BlogRouter = Backbone.Router.extend({
 
   routes: {
     '' : 'home',
-    'post/:id' : 'singleView'
+    'post/:id' : 'singleView',
+    // 'login' : 'loginScreen'
   },
 
  initialize: function () {
@@ -21,7 +22,12 @@ var BlogRouter = Backbone.Router.extend({
   singleView: function(id) {
     var singView = new SingleView({ postid: id, collection: all_posts });
     this.appView.showView(singView);
-  }
+  },
+
+  // loginScreen: function(){
+  //   var logView = new LoginView();
+  //   this.appView.showView(logView);
+  // }
 
 });
 

@@ -12,6 +12,13 @@ all_posts.fetch().done(function () {
 	Backbone.history.start();
 });
  
+var currentUser = Parse.User.current();
+if (currentUser) {
+  window.blog_router.navigate('', { trigger: true });
+} else {
+   window.blog_router.navigate('login', {trigger: true});
+}
+
 
 var AppView = function (){
 
