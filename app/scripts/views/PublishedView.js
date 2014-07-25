@@ -7,10 +7,20 @@ var PublishedView = Backbone.View.extend({
  		},
 
 		initialize: function(){
-				this.render();
+
+			var currentUser = Parse.User.current();
+			if (currentUser) {
+				console.log(currentUser.get('username') + ' is logged in');
+  			// window.blog_router.navigate('', { trigger: true });
+  			this.render();
 				this.collection.on('change', this.render, this);
 				this.collection.on('destroy',this.render, this);
 				this.collection.on('add', this.render,this);
+				$('header').removeClass('hidden').addClass('shown');	
+			} else {
+   			window.blog_router.navigate('login/', { trigger: true });
+			}
+
 		},
 
 		render:function(){
@@ -19,6 +29,7 @@ var PublishedView = Backbone.View.extend({
 			var rendered = template({ posts:this.collection.toJSON() });
 			$('.published-container').html(rendered);
 			$('.published-container').show();
+			// $('.loginViewContainer').hide();
 		},
 
     viewPost: function (event){
@@ -26,6 +37,7 @@ var PublishedView = Backbone.View.extend({
   		event.stopPropagation();
   		var postid = $(event.target).attr('id');
   		window.blog_router.navigate('#post/'+postid, {trigger: true});
+			// $('header').removeClass('shown').addClass('hidden');
   		$('.singleViewContainer').show();
   		// $('.addNewBtn').hide();    WORK ON THIS
   	}

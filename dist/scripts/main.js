@@ -48,10 +48,20 @@ var PublishedView = Backbone.View.extend({
  		},
 
 		initialize: function(){
-				this.render();
+
+			var currentUser = Parse.User.current();
+			if (currentUser) {
+				console.log(currentUser.get('username') + ' is logged in');
+  			// window.blog_router.navigate('', { trigger: true });
+  			this.render();
 				this.collection.on('change', this.render, this);
 				this.collection.on('destroy',this.render, this);
 				this.collection.on('add', this.render,this);
+				$('header').removeClass('hidden').addClass('shown');	
+			} else {
+   			window.blog_router.navigate('login/', { trigger: true });
+			}
+
 		},
 
 		render:function(){
@@ -60,6 +70,7 @@ var PublishedView = Backbone.View.extend({
 			var rendered = template({ posts:this.collection.toJSON() });
 			$('.published-container').html(rendered);
 			$('.published-container').show();
+			// $('.loginViewContainer').hide();
 		},
 
     viewPost: function (event){
@@ -67,6 +78,7 @@ var PublishedView = Backbone.View.extend({
   		event.stopPropagation();
   		var postid = $(event.target).attr('id');
   		window.blog_router.navigate('#post/'+postid, {trigger: true});
+			// $('header').removeClass('shown').addClass('hidden');
   		$('.singleViewContainer').show();
   		// $('.addNewBtn').hide();    WORK ON THIS
   	}
@@ -85,8 +97,8 @@ var SingleView = Backbone.View.extend({
  		},
 
 		initialize: function(attributes){
-  	this.singlePost = this.collection.get(attributes.postid);
-  	this.render();
+    	this.singlePost = this.collection.get(attributes.postid);
+    	this.render();
 		},
 
 	  render: function (options){
@@ -117,6 +129,78 @@ var SingleView = Backbone.View.extend({
 });
 
 		
+var LogInView = Backbone.View.extend({
+
+	el:'.logInViewContainer',
+
+	events: {
+		'click .newUserSelect' : 'newUser',
+		'click .returningUserSelect' : 'returningUser',
+		'click .logInBtn' : 'logIn',
+		'click .signUpBtn' : 'signUp'
+	},
+
+	initialize: function(){
+		// $('.signUpBox').hide();
+		// $('.logInBox').hide();
+		// $('header').hide();
+	},
+
+	newUser: function(e){
+		e.preventDefault();
+		$('.logInBox').hide();
+		$('.signUpBox').show();
+		$('.userBox').hide();
+
+	},
+
+	returningUser: function(e){
+		e.preventDefault();
+		$('.logInBox').show();
+		$('.signUpBox').hide();
+		$('.userBox').hide();
+	},
+
+	logIn: function(){
+
+		Parse.User.logIn($('#userName1').val(), $('#password1').val(), {
+		  success: function(user) {
+		 		window.blog_router.navigate('', { trigger: true });
+		  },
+		  error: function(user, error) {
+		    // The login failed. Check error to see why.
+		  }
+		});
+
+	},
+
+	signUp: function(){
+		var user = new Parse.User();
+		user.set("username", $('#signUpInput').val() );
+		user.set("password", $('#newPasswordInput').val() );
+		 
+		 
+		user.signUp(null, {
+		  success: function(user) {
+		    window.blog_router.navigate('', { trigger: true });
+		  },
+		  error: function(user, error) {
+		    // Show the error message somewhere and let the user try again.
+		    alert("Error: " + error.code + " " + error.message);
+		  }
+	});
+
+	}
+
+
+});
+
+
+
+
+
+
+
 Parse.initialize("VzA1OHYwxJS1hIhddwxiabGMHpAyfGGTsb53jKEv", "DL1poLJ3xopc0bWomQWujpUI5H2DdVD2hhaya6F8");
 
 
@@ -149,7 +233,7 @@ var AppView = function (){
 
  
 // Something happens
-$("button").on("click", function() {
+$(".addNewBtn").on("click", function() {
 
   // State changes
   $("body").toggleClass("dialogIsOpen");
@@ -217,18 +301,15 @@ $('.submit').on('click', function (event) {
 //   // Resets my form - skadoosh
 //   $(this).trigger('reset');
 
-// This is my router. It will react to the URL I visit and run a function based on that
-// Right now I only have 2, but I could easily add a lot more.
-// Also, both trigger a new view instance currently
 var BlogRouter = Backbone.Router.extend({
 
   routes: {
     '' : 'home',
     'post/:id' : 'singleView',
-    'login' : 'loginScreen'
+    'login/' : 'logInScreen'
   },
 
- initialize: function () {
+ initialize: function() {
     this.appView = new AppView();
   },
 
@@ -237,14 +318,13 @@ var BlogRouter = Backbone.Router.extend({
     this.appView.showView(pubView);
   },
 
-
   singleView: function(id) {
     var singView = new SingleView({ postid: id, collection: all_posts });
     this.appView.showView(singView);
   },
 
-  loginScreen: function(){
-    var logView = new LoginView();
+  logInScreen: function(){
+    var logView = new LogInView( {collection: all_posts});
     this.appView.showView(logView);
   }
 

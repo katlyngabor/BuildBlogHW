@@ -12,13 +12,6 @@ all_posts.fetch().done(function () {
 	Backbone.history.start();
 });
  
-var currentUser = Parse.User.current();
-if (currentUser) {
-  window.blog_router.navigate('', { trigger: true });
-} else {
-   window.blog_router.navigate('login', {trigger: true});
-}
-
 
 var AppView = function (){
 
@@ -37,7 +30,7 @@ var AppView = function (){
 
  
 // Something happens
-$("button").on("click", function() {
+$(".addNewBtn").on("click", function() {
 
   // State changes
   $("body").toggleClass("dialogIsOpen");

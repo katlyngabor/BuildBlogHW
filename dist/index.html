@@ -20,17 +20,25 @@
 
   </head>
   <body>
-    <header>
-    <div class="loginViewContainer">
+    <header class="hidden">
+    <div class="logInViewContainer">
+      <div class="userBox">
+        <button class="newUserSelect">New User?</button>
+        <button class="returningUserSelect">Returning User?</button>
+      </div>
       <div class="logInBox">
         <input type='text' name="logInInput" id="logInInput" placeholder="Username"/>
-        <input type='text' name='passwordInput' id='passwordInput' placeholder='Password'/>
+        <input type='password' name='passwordInput' id='passwordInput' placeholder='Password'/>
+        <button class='logInBtn'>Login</button>
       </div>
       <div class="signUpBox">
          <input type='text' name="signUpInput" id="signUpInput" placeholder="Username"/>
-         <input type='text' name='newPasswordInput' id='newPasswordInput' placeholder='Create password'/>
+         <input type='password' name='newPasswordInput' id='newPasswordInput' placeholder='Create password'/>
+         <button class='signUpBtn'>Sign Up</button>
       </div>
     </div>
+
+
     <div class="titleContainer">
       <div class="headerTitle">Words, Words, Words.<span class="animate">|</span></div>  
     <!--   <div class="animate">|</div>  -->

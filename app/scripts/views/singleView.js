@@ -8,8 +8,8 @@ var SingleView = Backbone.View.extend({
  		},
 
 		initialize: function(attributes){
-  	this.singlePost = this.collection.get(attributes.postid);
-  	this.render();
+    	this.singlePost = this.collection.get(attributes.postid);
+    	this.render();
 		},
 
 	  render: function (options){
