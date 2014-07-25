@@ -13,6 +13,12 @@ var LogInView = Backbone.View.extend({
 		// $('.signUpBox').hide();
 		// $('.logInBox').hide();
 		// $('header').hide();
+		(this).render();
+	},
+
+	render: function(){
+		$('.published-container').hide();
+		// $('.userBox').show();
 	},
 
 	newUser: function(e){
@@ -32,7 +38,7 @@ var LogInView = Backbone.View.extend({
 
 	logIn: function(){
 
-		Parse.User.logIn($('#userName1').val(), $('#password1').val(), {
+		Parse.User.logIn($('#logInInput').val(), $('#passwordInput').val(), {
 		  success: function(user) {
 		 		window.blog_router.navigate('', { trigger: true });
 		  },

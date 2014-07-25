@@ -17,6 +17,7 @@ var SingleView = Backbone.View.extend({
 		var rendered = template(this.singlePost.toJSON());
     this.$el.html(rendered);
     $('.published-container').hide();
+    $('header').removeClass('shown').addClass('hidden');  
   	},
 
 		returnHome: function (event){
