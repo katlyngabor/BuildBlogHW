@@ -1,9 +1,9 @@
 var PublishedView = Backbone.View.extend({
 		
-		// el:'.wrapper',
 
 	 	events: { 
-     	'click a' : 'viewPost'
+     	'click a' : 'viewPost',
+     	'click .logOutBtn' : 'logOut'
  		},
 
 		initialize: function(){
@@ -28,6 +28,7 @@ var PublishedView = Backbone.View.extend({
 			var template = Handlebars.compile($("#published-template").html());
 			var rendered = template({ posts:this.collection.toJSON() });
 			$('.published-container').html(rendered);
+			$('.userBox').hide();
 			$('.published-container').show();
 			// $('.loginViewContainer').hide();
 		},
@@ -40,6 +41,14 @@ var PublishedView = Backbone.View.extend({
 			// $('header').removeClass('shown').addClass('hidden');
   		$('.singleViewContainer').show();
   		// $('.addNewBtn').hide();    WORK ON THIS
+  	},
+
+  	logOut: function(e){
+  		e.preventDefault();
+  		e.stopPropagation();
+  		console.log('logout button clicked');
+  		Parse.User.logOut();	
+  		window.blog_router.navigate('login/', { trigger: true });
   	}
 
 

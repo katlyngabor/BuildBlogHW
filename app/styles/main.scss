@@ -102,9 +102,10 @@ body{
   border-style:outset;
 }
 
-// .tagline{
-//   float:left;
-// }
+.logOutBtn{
+  float:right;
+  border-style:none;  
+}
 
 button:hover{
   background-color:#AC6C82;

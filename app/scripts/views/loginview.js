@@ -41,6 +41,7 @@ var LogInView = Backbone.View.extend({
 		Parse.User.logIn($('#logInInput').val(), $('#passwordInput').val(), {
 		  success: function(user) {
 		 		window.blog_router.navigate('', { trigger: true });
+
 		  },
 		  error: function(user, error) {
 		    // The login failed. Check error to see why.
