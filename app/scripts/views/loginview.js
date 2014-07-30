@@ -13,12 +13,15 @@ var LogInView = Backbone.View.extend({
 		// $('.signUpBox').hide();
 		// $('.logInBox').hide();
 		// $('header').hide();
-		(this).render();
+		console.log('in your LoginView!');
+		this.render();
 	},
 
 	render: function(){
+		console.log('rendering!');
 		$('.published-container').hide();
-		// $('.userBox').show();
+		$('header').hide();
+		$('.userBox').show();
 	},
 
 	newUser: function(e){
@@ -52,7 +55,7 @@ var LogInView = Backbone.View.extend({
 
 	signUp: function(){
 		var user = new Parse.User();
-		user.set("username", $('#signUpInput').val() );
+			user.set("username", $('#signUpInput').val() );
 		user.set("password", $('#newPasswordInput').val() );
 		 
 		 

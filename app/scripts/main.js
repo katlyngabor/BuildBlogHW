@@ -65,6 +65,19 @@ $('.submit').on('click', function (event) {
 });
 
 
+$('.logOutBtn').on('click',function(e){
+    e.preventDefault();
+    e.stopPropagation();
+    console.log('logout button clicked');
+    Parse.User.logOut();  
+    window.blog_router.navigate('login/', { trigger: true });
+});
+
+$('.closeModalBtn').on('click', function(e){
+  console.log('close your modal');
+  e.preventDefault();
+  $('body').toggleClass('dialogIsOpen');
+});
 
 // // 	// Create an instance of my Collection
 // // var whiskey_list = new WhiskeyCollection();

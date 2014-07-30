@@ -2,13 +2,14 @@ var PublishedView = Backbone.View.extend({
 		
 
 	 	events: { 
-     	'click a' : 'viewPost',
-     	'click .logOutBtn' : 'logOut'
+     	'click a' : 'viewPost'
+     	// 'click .logOutBtn' : 'logOut'
  		},
 
 		initialize: function(){
 
 			var currentUser = Parse.User.current();
+			console.log('in your PublishedView Good for you!');
 			if (currentUser) {
 				console.log(currentUser.get('username') + ' is logged in');
   			// window.blog_router.navigate('', { trigger: true });
@@ -30,6 +31,7 @@ var PublishedView = Backbone.View.extend({
 			$('.published-container').html(rendered);
 			$('.userBox').hide();
 			$('.published-container').show();
+			$('header').show();
 			// $('.loginViewContainer').hide();
 		},
 
@@ -41,15 +43,15 @@ var PublishedView = Backbone.View.extend({
 			// $('header').removeClass('shown').addClass('hidden');
   		$('.singleViewContainer').show();
   		// $('.addNewBtn').hide();    WORK ON THIS
-  	},
-
-  	logOut: function(e){
-  		e.preventDefault();
-  		e.stopPropagation();
-  		console.log('logout button clicked');
-  		Parse.User.logOut();	
-  		window.blog_router.navigate('login/', { trigger: true });
   	}
+
+  	// logOut: function(e){
+  	// 	e.preventDefault();
+  	// 	e.stopPropagation();
+  	// 	console.log('logout button clicked');
+  	// 	Parse.User.logOut();	
+  	// 	window.blog_router.navigate('login/', { trigger: true });
+  	// }
 
 
 });
