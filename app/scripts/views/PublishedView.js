@@ -9,7 +9,6 @@ var PublishedView = Backbone.View.extend({
 		initialize: function(){
 
 			var currentUser = Parse.User.current();
-			console.log('in your PublishedView Good for you!');
 			if (currentUser) {
 				console.log(currentUser.get('username') + ' is logged in');
   			// window.blog_router.navigate('', { trigger: true });

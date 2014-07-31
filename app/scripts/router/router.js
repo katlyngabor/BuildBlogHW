@@ -11,18 +11,33 @@ var BlogRouter = Backbone.Router.extend({
   },
 
   home: function() {
-    var pubView = new PublishedView( { collection: all_posts });
-    this.appView.showView(pubView);
+    var currentUser = Parse.User.current();
+    if (currentUser) {
+      var pubView = new PublishedView( { collection: all_posts });
+      this.appView.showView(pubView);
+    } else {
+      window.blog_router.navigate('login/', { trigger: true });
+    }
   },
 
   singleView: function(id) {
+    var currentUser = Parse.User.current();
+    if (currentUser) {
     var singView = new SingleView({ postid: id, collection: all_posts });
     this.appView.showView(singView);
+    } else {
+      window.blog_router.navigate('login/', { trigger: true });
+    }
   },
 
   logInScreen: function(){
+     var currentUser = Parse.User.current();
+     if (currentUser) {
+      window.blog_router.navigate('', { trigger: true });
+    } else {
     var logView = new LogInView( {collection: all_posts});
     this.appView.showView(logView);
+    }
   }
 
 });
