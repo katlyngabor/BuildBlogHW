@@ -11,7 +11,6 @@ var PublishedView = Backbone.View.extend({
 			var currentUser = Parse.User.current();
 			if (currentUser) {
 				console.log(currentUser.get('username') + ' is logged in');
-  			// window.blog_router.navigate('', { trigger: true });
   			this.render();
 				this.collection.on('change', this.render, this);
 				this.collection.on('destroy',this.render, this);

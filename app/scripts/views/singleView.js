@@ -19,7 +19,7 @@ var SingleView = Backbone.View.extend({
     $('.published-container').hide();
     $('header').removeClass('shown').addClass('hidden');  
   	},
-
+    
 		returnHome: function (event){
 			event.preventDefault();
 		  window.blog_router.navigate('', { trigger: true });
