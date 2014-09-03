@@ -28,11 +28,15 @@
 
   </head>
   <body>
-   
+  <!--  
     <div class="logInViewContainer">
       <div class="userBox">
-        <button class="newUserSelect">New User?</button>
-        <button class="returningUserSelect">Returning User?</button>
+        <div class="buttonContainer">
+          <button class="newUserSelect">New User?</button>
+        </div>
+        <div class="buttonContainer">  
+          <button class="returningUserSelect">Returning User?</button>
+        </div>
       </div>
       <div class="logInBox">
         <input type='text' name="logInInput" id="logInInput" placeholder="Username"/>
@@ -44,18 +48,15 @@
          <input type='password' name='newPasswordInput' id='newPasswordInput' placeholder='Create password'/>
          <button class='signUpBtn'>Sign Up</button>
       </div>
-    </div>
+    </div> -->
 
   <header class="hidden">
     <div class="titleContainer">
       <div class="headerTitle">Words, Words, Words.<span class="animate">|</span></div>  
-    <!--   <div class="animate">|</div>  -->
     </div>
-  <!--   <div class="tagline">A blog for writers to write.</div> --> 
-<!--     <div class="wrapper"> --> 
       <div class="tagline">Where writers write</div>
       <button class="addNewBtn"> + </button>
-      <button class="logOutBtn"> logout</button>
+     <!--  <button class="logOutBtn"> logout</button> -->
   </header>
       <div class="published-container">
       </div>
@@ -76,16 +77,6 @@
       <!-- <button class="done">Done</button> -->
     </div>
 
-    
-
-         
-    
-
-<!-- 
-<div class="tags">Tags:
-           {{#each tags}}
-           {{if }}
- -->
 
     <script type="text/x-handlebars-template" id="published-template">
       {{#each posts}}
@@ -120,7 +111,6 @@
         <script src="scripts/models/models.js"></script>
         <script src="scripts/views/PublishedView.js"></script>
         <script src="scripts/views/singleView.js"></script>
-        <script src="scripts/views/loginview.js"></script>
         <script src="scripts/main.js"></script>
         <script src="scripts/router/router.js"></script>
 

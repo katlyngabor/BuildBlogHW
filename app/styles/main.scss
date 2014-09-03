@@ -117,8 +117,24 @@ button:hover{
   background-color:#AC6C82;
 }
 
+.logInViewContainer{
+  @include span-columns(6);
+  margin-left:255px;
+  margin-top:100px;
+}
+
 .userBox{
-  margin:0 auto;
+  @include buttonStyles;
+  @include span-columns(3);
+  margin: 0 auto;
+  margin-top:100px;
+  height:300px;
+  background-color:red;
+    .buttonContainer{
+      
+      margin-left:80px;
+      .
+    }
 }
 
 .modal {
@@ -320,7 +336,7 @@ a:hover {
     button{
       @include buttonStyles;
       font-size:14px;
-      float:right;
+      // float:right;
     }
     .singleViewTitle{
       color:#f04349;
